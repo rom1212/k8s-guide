@@ -1,9 +1,10 @@
-# Build
-## Docs
+# Development
+## Build
+### Docs
 * https://github.com/kubernetes/kubernetes/tree/master/build/
 * https://kubernetes.io/docs/getting-started-guides/binary_release/
 
-## Install Docker
+### Install Docker
 Which version is good? [kubeadmin installation guide](https://kubernetes.io/docs/setup/independent/install-kubeadm/#installing-kubectl) says:
 ```
 Version 1.12 is recommended, but v1.10 and v1.11 are known to work as well. Versions 1.13 and 17.03+ have not yet been tested and verified by the Kubernetes node team.
@@ -24,12 +25,16 @@ sudo gpasswd -a $USER docker
 newgrp docker
 ```
 
-## Build
+### Build
 ```
 git clone https://github.com/kubernetes/kubernetes.git
 cd kubernetes
 build/run.sh make # Build just linux binaries in the container. Pass options and packages as necessary.
 ```
+
+## Pull Request
+https://github.com/kubernetes/community/blob/master/contributors/devel/pull-requests.md
+
 
 # Scalability - Building Large Scale Clusters
 https://kubernetes.io/docs/admin/cluster-large/ at v1.7

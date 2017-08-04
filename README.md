@@ -9,9 +9,6 @@ Which version is good? [kubeadmin installation guide](https://kubernetes.io/docs
 Version 1.12 is recommended, but v1.10 and v1.11 are known to work as well. Versions 1.13 and 17.03+ have not yet been tested and verified by the Kubernetes node team.
 ```
 
-
-
-
 Older versions of docker (docker-engine version 1.11.2) can be found in Google's older instructions of kubeadm (it is now removed).
 ```
 apt-get update && apt-get install -y apt-transport-https
@@ -27,7 +24,12 @@ sudo gpasswd -a $USER docker
 newgrp docker
 ```
 
-
+## Build
+```
+git clone https://github.com/kubernetes/kubernetes.git
+cd kubernetes
+build/run.sh make # Build just linux binaries in the container. Pass options and packages as necessary.
+```
 
 # Scalability - Building Large Scale Clusters
 https://kubernetes.io/docs/admin/cluster-large/ at v1.7

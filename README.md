@@ -30,6 +30,15 @@ newgrp docker
 git clone https://github.com/kubernetes/kubernetes.git
 cd kubernetes
 build/run.sh make # Build just linux binaries in the container. Pass options and packages as necessary.
+
+# Copy built binaries from docker to local disk
+# Add "set -x" to build/copy-output.sh can show the details of the copy process:
+#  * create a docker container from the build images, and run rsyncd.sh, e.g.
+#     docker run --name=kube-rsync-2efd32e9e4-5-v1.8.3-2 --user=1000:999 --hostname=ming --volumes-from kube-build-data-2efd32e9e4-5-v1.8.3-2 -p 127.0.0.1::8730 -d --env KUBE_FASTBUILD=false --env KUBE_BUILDER_OS=linux-gnu --env KUBE_VERBOSE=5 --env GOFLAGS= --env GOLDFLAGS= --env GOGCFLAGS= --interactive --tty kube-build:build-2efd32e9e4-5-v1.8.3-2 /rsyncd.sh
+#  * run rsync, e.g.
+#     rsync --archive --prune-empty-dirs --password-file=/home/mingzhao/kubernetes/_output/images/kube-build:build-2efd32e9e4-5-v1.8.3-2/rsyncd.password '--filter=- /_temp/' '--filter=+ /vendor/' '--filter=+ /Godeps/' '--filter=+ /staging/***/Godeps/**' '--filter=+ /_output/dockerized/bin/**' '--filter=+ zz_generated.*' '--filter=+ generated.proto' '--filter=+ *.pb.go' '--filter=+ types.go' '--filter=+ */' '--filter=- /**' rsync://k8s@127.0.0.1:32770/k8s/ /home/mingzhao/kubernetes
+build/copy-output.sh
+
 ```
 
 ## Pull Request

@@ -1,6 +1,11 @@
-# Build 
+# Build
+## Docs
 * https://github.com/kubernetes/kubernetes/tree/master/build/
 * https://kubernetes.io/docs/getting-started-guides/binary_release/
+
+## Install Docker
+Older versions of docker.
+
 
 # Scalability - Building Large Scale Clusters
 https://kubernetes.io/docs/admin/cluster-large/ at v1.7
